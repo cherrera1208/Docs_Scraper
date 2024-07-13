@@ -63,9 +63,9 @@ While this project solves a real-world problem, there is room for improvement:
 This was my first attempt at web scraping, and I successfully made the documentation available offline. I learned more about Python, Jinja2, and Scrapy in the process.
 
 # Showcase
-![alt text](../Img/ClarisIndex.png)
-![alt text](../Img/ClarisSearch.png)
-![alt text](../Img/ClarisDocPage.png)
-![alt text](../Img/MonkeyBreadIndex.png)
-![alt text](../Img/MonkeyBreadSearch.png)
-![alt text](../Img/MonkeyBreadDocs.png)
+![alt text](Img/ClarisIndex.png)
+![alt text](Img/ClarisSearch.png)
+![alt text](Img/ClarisDocPage.png)
+![alt text](Img/MonkeyBreadIndex.png)
+![alt text](Img/MonkeyBreadSearch.png)
+![alt text](Img/MonkeyBreadDocs.png)
