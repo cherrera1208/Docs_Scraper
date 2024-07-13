@@ -1,0 +1,354 @@
+/* Confetti and Streamer Animation */
+#fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  width: 5px;
+  height: 15px;
+  background-color: var(--confetti-color);
+  opacity: 0;
+  animation: confetti-animation 1s ease-out forwards;
+  transform: rotate(var(--confetti-angle));
+  border-radius: 2px;
+  /* Add rounded edges */
+}
+
+@keyframes confetti-animation {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--confetti-angle));
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(300px) rotate(var(--confetti-angle));
+  }
+}
+
+.streamer {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(90deg, red, yellow, green, blue, purple);
+  border-radius: 50%;
+  opacity: 0;
+  animation: streamer-animation 1s ease-out forwards;
+  transform: rotate(var(--streamer-angle));
+  /* Add rotation */
+}
+
+@keyframes streamer-animation {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(300px) rotate(720deg);
+    /* Increase rotation */
+  }
+}
+
+/* Explosion Animation */
+.monkey-piece {
+  position: absolute;
+  opacity: 1;
+  animation: explode-animation 1s ease-out forwards;
+}
+
+@keyframes explode-animation {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(calc(var(--distance) * cos(var(--angle))), calc(var(--distance) * sin(var(--angle)))) rotate(var(--rotation));
+  }
+}
+
+/* Spiral Animation */
+@keyframes spiral {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(1.5) rotate(67.5deg);
+  }
+
+  50% {
+    transform: translate(0, 0) scale(2) rotate(135deg);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(2.5) rotate(202.5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(3) rotate(270deg);
+  }
+}
+
+@keyframes spiral-shrink {
+  0% {
+    transform: translate(0, 0) scale(3) rotate(270deg);
+  }
+
+  25% {
+    transform: translate(0, 0) scale(2.5) rotate(337.5deg);
+  }
+
+  50% {
+    transform: translate(0, 0) scale(2) rotate(405deg);
+  }
+
+  75% {
+    transform: translate(0, 0) scale(1.5) rotate(472.5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1) rotate(540deg);
+  }
+}
+
+.monkey-icon.spiral {
+  animation: spiral 0.8s linear forwards, spiral-shrink 0.8s linear forwards 0.8s;
+}
+
+/* Initial Fall Animation */
+@keyframes fall-out {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 60vh;
+  }
+}
+
+/* Initial Fall Animation */
+@keyframes fall-out {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 60vh;
+    /* Past the bottom of the viewport */
+  }
+}
+
+/* Bouncy Ball Animation */
+@keyframes bouncy-ball {
+  0% {
+    top: 60vh;
+    /* Start from past the viewport */
+  }
+
+  20% {
+    top: -10vh;
+    /* First rebound higher */
+  }
+
+  30% {
+    top: 50vh;
+    /* Ground level */
+  }
+
+  40% {
+    top: -10vh;
+  }
+
+  50% {
+    top: 25vh;
+    /* Ground level */
+  }
+
+  60% {
+    top: -10vh;
+  }
+
+  70% {
+    top: 7.5vh;
+    /* Ground level */
+  }
+
+  80% {
+    top: -5vh;
+  }
+
+  85% {
+    top: 3vh;
+    /* Ground level */
+  }
+
+  88% {
+    top: -2.5vh;
+  }
+
+  90% {
+    top: 2vh;
+  }
+
+  92% {
+    top: -.8vh;
+    /* Ground level */
+  }
+
+  94% {
+    top: 1vh;
+    /* Ground level */
+  }
+
+  96% {
+    top: -0.6vh;
+    /* Ground level */
+  }
+
+  98% {
+    top: 0.4vh;
+  }
+
+  100% {
+    top: -0.2vh;
+    /* Ground level */
+  }
+}
+
+.monkey-icon {
+  position: relative;
+  display: inline-block;
+  transition: transform 1s ease-in-out;
+}
+
+.monkey-icon.fall {
+  position: relative;
+  animation: fall-out 1s forwards;
+}
+
+.monkey-icon.bouncy-ball {
+  position: relative;
+  animation: bouncy-ball 6s cubic-bezier(1, 0.05, 0.1, 1) forwards;
+}
+
+/* Jiggly Monkey Animation */
+@keyframes jiggly-monkey {
+  0% {
+    top: 0;
+  }
+
+  12.5% {
+    top: -1.1vh;
+  }
+
+  25% {
+    top: 0;
+  }
+
+  37.5% {
+    top: -1.1vh;
+  }
+
+  50% {
+    top: 0;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+.monkey-icon.jiggly-monkey {
+  position: relative;
+  animation: jiggly-monkey 1.6s ease-in-out;
+}
+
+/* Zippy Monkey Animation */
+@keyframes zippy {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+
+  20% {
+    transform: translate(calc(var(--x1) * 75vw), calc(var(--y1) * 75vh)) rotate(var(--r1)) scale(1.5);
+  }
+
+  40% {
+    transform: translate(calc(var(--x2) * 75vw), calc(var(--y2) * 75vh)) rotate(var(--r2)) scale(2);
+  }
+
+  60% {
+    transform: translate(calc(var(--x3) * 75vw), calc(var(--y3) * 75vh)) rotate(var(--r3)) scale(2.5);
+  }
+
+  80% {
+    transform: translate(calc(var(--x4) * 75vw), calc(var(--y4) * 75vh)) rotate(var(--r4)) scale(3);
+  }
+
+  100% {
+    transform: translate(calc(var(--x5) * 75vw), calc(var(--y5) * 75vh)) rotate(var(--r5)) scale(3.5);
+  }
+}
+
+/* Reverse Zippy Monkey Animation */
+@keyframes zippy-reverse {
+  0% {
+    transform: translate(calc(var(--x5) * 75vw), calc(var(--y5) * 75vh)) rotate(var(--r5)) scale(3.5);
+  }
+
+  20% {
+    transform: translate(calc(var(--x4) * 75vw), calc(var(--y4) * 75vh)) rotate(var(--r4)) scale(3);
+  }
+
+  40% {
+    transform: translate(calc(var(--x3) * 75vw), calc(var(--y3) * 75vh)) rotate(var(--r3)) scale(2.5);
+  }
+
+  60% {
+    transform: translate(calc(var(--x2) * 75vw), calc(var(--y2) * 75vh)) rotate(var(--r2)) scale(2);
+  }
+
+  80% {
+    transform: translate(calc(var(--x1) * 75vw), calc(var(--y1) * 75vh)) rotate(var(--r1)) scale(1.5);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+.monkey-icon.zippy {
+  animation: zippy 3.25s linear forwards;
+}
+
+.monkey-icon.zippy-reverse {
+  animation: zippy-reverse 3.25s linear forwards;
+}
+
+@keyframes move-to-center {
+  0% {
+    top: var(--initial-top);
+    left: var(--initial-left);
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(10) rotate(360deg);
+  }
+}
+
+.monkey-icon.move-to-center {
+  position: fixed;
+  animation: move-to-center 1s ease-out forwards;
+}
